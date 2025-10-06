@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'PlayfairDisplay-Italic-.ttf';
+    src: url('assets\fonts\PlayfairDisplay-Italic-.ttf');
+}
+
+.font-custom{
+    font-family: 'PlayfairDisplay-Italic-.ttf';
+}
