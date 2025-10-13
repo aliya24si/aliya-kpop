@@ -473,17 +473,17 @@
                         </a>
                     </li>
                     <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Tambah Pelanggan</li>
+                    <li class="breadcrumb-item active" aria-current="page"></li>
                 </ol>
             </nav>
             <div class="d-flex justify-content-between w-100 flex-wrap">
                 <div class="mb-3 mb-lg-0">
-                    <h1 class="h4">Tambah Pelanggan</h1>
+                    <h1 class="h4">Data Pelanggan</h1>
                     <p class="mb-0">Form untuk menambah pelanggan baru</p>
                 </div>
                 <div>
-                    <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/forms/"
-                        class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
+                    <a href="pelanggan.create"
+                        class="btn btn-success text-white"><i class="far fa-question-circle me-1"></i> Tambah Pelanggan</a>
                 </div>
             </div>
         </div>
