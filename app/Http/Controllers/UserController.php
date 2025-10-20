@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\User;
@@ -14,7 +13,7 @@ class UserController extends Controller
     public function index()
     {
         $data['dataUser'] = User::all();
-		return view('admin.user.index',$data);
+        return view('admin.user.index', $data);
     }
 
     /**
@@ -30,22 +29,19 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $data['name']                    = $request->name;
-        $data['email']                   = $request->email;
-        $data['password']                = Hash::make($request->password);;
-        $data['password_confirmation']   = $request->password_confirmation;
+        $request->validate([
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+        ]);
+
+        $data['name']     = $request->name;
+        $data['email']    = $request->email;
+        $data['password'] = Hash::make($request->password);
 
         User::create($data);
 
-        return redirect()->route('user.create')->with('success', 'Penambahan Data Berhasil!');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
+        return redirect()->route('user.index')->with('success', 'Penambahan data user berhasil!');
     }
 
     /**
@@ -53,8 +49,8 @@ class UserController extends Controller
      */
     public function edit(string $id)
     {
-        $data['dataUser'] = Pelanggan::findOrFail($id);
-    return view('admin.user.edit', $data);
+        $data['dataUser'] = User::findOrFail($id);
+        return view('admin.user.edit', $data);
     }
 
     /**
@@ -62,7 +58,23 @@ class UserController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $user = User::findOrFail($id);
+
+        $validated = $request->validate([
+            'name'     => 'required|string|max:100',
+            'email'    => 'required|email|max:255|unique:users,email,' . $id,
+            'password' => 'nullable|string|min:6|confirmed',
+        ]);
+
+        if ($request->filled('password')) {
+            $validated['password'] = Hash::make($request->password);
+        } else {
+            unset($validated['password']);
+        }
+
+        $user->update($validated);
+
+        return redirect()->route('user.index')->with('success', 'Data user berhasil diperbarui!');
     }
 
     /**
@@ -70,6 +82,9 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('user.index')->with('success', 'Data user berhasil dihapus!');
     }
 }

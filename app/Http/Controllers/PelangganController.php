@@ -39,7 +39,7 @@ class PelangganController extends Controller
 
         Pelanggan::create($data);
 
-        return redirect()->route('pelanggan.create')->with('success', 'Penambahan Data Berhasil!');
+        return redirect()->route('pelanggan.index')->with('success', 'Penambahan Data Berhasil!');
     }
 
     /**

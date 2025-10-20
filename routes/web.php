@@ -45,8 +45,7 @@ Route::post('question/store', [QuestionController::class, 'store'])
 
 Route::resource('pelanggan', PelangganController::class); //untuk memanggil semua function sekaligus
 
-<<<<<<< HEAD
 Route::resource('user', UserController::class);
-=======
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('Dashboard');
->>>>>>> ff9565858150475a3a02249c22cf778c2bb99738
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+

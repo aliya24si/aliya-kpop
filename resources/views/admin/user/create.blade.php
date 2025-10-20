@@ -149,7 +149,7 @@
                     </a>
                 </li>
                 <li class="nav-item  active ">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('pelanggan.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
                                 stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -163,7 +163,7 @@
                     </a>
                 </li>
                 <li class="nav-item  active ">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('user.index') }}" class="nav-link">
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
                                 stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
@@ -496,7 +496,7 @@
                     <p class="mb-0">Form untuk menambah User baru</p>
                 </div>
                 <div>
-                    <a href="https://themesberg.com/docs/volt-bootstrap-5-dashboard/components/forms/"
+                    <a href="{{ route('user.index') }}"
                         class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
                 </div>
             </div>
@@ -550,7 +550,8 @@
 
                             <div class="col-lg-4 col-md-12 mb-3">
                                 <label for="password_confirmation" class="form-label">Password Confirmation</label>
-                                <input type="text" class="form-control @error('password_confirmation') is-invalid @enderror"
+                                <input type="text"
+                                    class="form-control @error('password_confirmation') is-invalid @enderror"
                                     id="password_confirmation" name="password_confirmation" maxlength="20">
                                 @error('password_confirmation')
                                     <div class="invalid-feedback">{{ $message }}</div>
