@@ -17,16 +17,16 @@
                         </svg>
                     </a>
                 </li>
-                <li class="breadcrumb-item"><a href="#">Pelanggan</a></li>
+                <li class="breadcrumb-item"><a href="#">User</a></li>
             </ol>
         </nav>
         <div class="d-flex justify-content-between w-100 flex-wrap">
             <div class="mb-3 mb-lg-0">
-                <h1 class="h4">Data Pelanggan</h1>
-                <p class="mb-0">List data seluruh pelanggan</p>
+                <h1 class="h4">Data User</h1>
+                <p class="mb-0">List data seluruh User</p>
             </div>
             <div>
-                <a href="{{ route('pelanggan.create') }}" class="btn btn-success text-white">Tambah Pelanggan</a>
+                <a href="{{ route('user.create') }}" class="btn btn-success text-white">Tambah User</a>
             </div>
         </div>
     </div>
@@ -36,27 +36,21 @@
             <div class="card border-0 shadow mb-4">
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table id="table-pelanggan" class="table table-centered table-nowrap mb-0 rounded">
+                        <table id="table-User" class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
-                                    <th class="border-0">First Name</th>
-                                    <th class="border-0">Last Name</th>
-                                    <th class="border-0">Birthday</th>
-                                    <th class="border-0">Gender</th>
+                                    <th class="border-0">Nama </th>
                                     <th class="border-0">Email</th>
-                                    <th class="border-0">Phone</th>
+                                    <th class="border-0">Password</th>
                                     <th class="border-0 rounded-end">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($dataPelanggan as $item)
+                                @foreach ($dataUser as $item)
                                     <tr>
-                                        <td>{{ $item->first_name }}</td>
-                                        <td>{{ $item->last_name }}</td>
-                                        <td>{{ $item->birthday }}</td>
-                                        <td>{{ $item->gender }}</td>
+                                        <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ $item->password }}</td>
                                         <td>Tombol Edit & Tombol Hapus</td>
                                     </tr>
                                 @endforeach

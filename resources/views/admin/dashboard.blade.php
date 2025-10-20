@@ -27,11 +27,13 @@
     <meta name="author" content="Themesberg">
 
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="120x120" href="../../assets/img/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/img/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/img/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../../assets/img/favicon/site.webmanifest">
-    <link rel="mask-icon" href="../../assets/img/favicon/safari-pinned-tab.svg" color="#ffffff">
+    <link rel="apple-touch-icon" sizes="120x120" href="{{ asset('assets-admin') }}/img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ asset('assets-admin') }}/img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ asset('assets-admin') }}/img/favicon/favicon-16x16.png">
+    <link rel="manifest" href="{{ asset('assets-admin') }}/img/favicon/site.webmanifest">
+    <link rel="mask-icon" href="{{ asset('assets-admin') }}/img/favicon/safari-pinned-tab.svg" color="#ffffff">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="theme-color" content="#ffffff">
 
@@ -45,6 +47,20 @@
         <a class="navbar-brand me-lg-5" href="../../index.html">
             <img class="navbar-brand-dark" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" />
             <img class="navbar-brand-light" src="{{ asset('assets-admin/img/brand/light.svg') }}" alt="Volt logo" />
+        </a>
+        <div class="d-flex align-items-center">
+            <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <nav class="navbar navbar-dark navbar-theme-primary px-4 col-12 d-lg-none">
+        <a class="navbar-brand me-lg-5" href="../../index.html">
+            <img class="navbar-brand-dark" src="{{ asset('assets-admin') }}/img/brand/light.svg" alt="Volt logo" /> <img
+                class="navbar-brand-light" src="{{ asset('assets-admin') }}/img/brand/dark.svg" alt="Volt logo" />
         </a>
         <div class="d-flex align-items-center">
             <button class="navbar-toggler d-lg-none collapsed" type="button" data-bs-toggle="collapse"
@@ -110,6 +126,34 @@
                             </svg>
                         </span>
                         <span class="sidebar-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item  active ">
+                    <a href="" class="nav-link">
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
+                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">Pelanggan</span>
+                    </a>
+                </li>
+                <li class="nav-item  active ">
+                    <a href="" class="nav-link">
+                        <span class="sidebar-icon">
+                            <svg class="icon icon-xs me-2" data-slot="icon" fill="none" stroke-width="1.5"
+                                stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z">
+                                </path>
+                            </svg>
+                        </span>
+                        <span class="sidebar-text">User</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -180,6 +224,7 @@
         </div>
     </nav>
 
+
     <main class="content">
 
         <nav class="navbar navbar-top navbar-expand navbar-dashboard navbar-dark ps-0 pe-2 pb-0">
@@ -226,7 +271,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="../../assets/img/team/profile-picture-1.jpg"
+                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-1.jpg"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 ms-2">
@@ -250,7 +295,7 @@
                                             <div class="col-auto">
                                                 <!-- Avatar -->
                                                 <img alt="Image placeholder"
-                                                    src="../../assets/img/team/profile-picture-2.jpg"
+                                                    src="{{ asset('assets-admin') }}/img/team/profile-picture-2.jpg"
                                                     class="avatar-md rounded">
                                             </div>
                                             <div class="col ps-0 ms-2">
@@ -286,7 +331,7 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 <div class="media d-flex align-items-center">
                                     <img class="avatar rounded-circle" alt="Image placeholder"
-                                        src="../../assets/img/team/profile-picture-3.jpg">
+                                        src="{{ asset('assets-admin') }}/img/team/profile-picture-3.jpg">
                                     <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
                                         <span class="mb-0 font-small fw-bold text-gray-900">Bonnie Green</span>
                                     </div>
@@ -564,7 +609,7 @@
                                                 <!-- Avatar -->
                                                 <a href="#" class="avatar">
                                                     <img class="rounded" alt="Image placeholder"
-                                                        src="../../assets/img/team/profile-picture-1.jpg">
+                                                        src="{{ asset('assets-admin') }}/img/team/profile-picture-1.jpg">
                                                 </a>
                                             </div>
                                             <div class="col-auto ms--2">
@@ -596,7 +641,7 @@
                                                 <!-- Avatar -->
                                                 <a href="#" class="avatar">
                                                     <img class="rounded" alt="Image placeholder"
-                                                        src="../../assets/img/team/profile-picture-2.jpg">
+                                                        src="{{ asset('assets-admin') }}/img/team/profile-picture-2.jpg">
                                                 </a>
                                             </div>
                                             <div class="col-auto ms--2">
@@ -628,7 +673,7 @@
                                                 <!-- Avatar -->
                                                 <a href="#" class="avatar">
                                                     <img class="rounded" alt="Image placeholder"
-                                                        src="../../assets/img/team/profile-picture-3.jpg">
+                                                        src="{{ asset('assets-admin') }}/img/team/profile-picture-3.jpg">
                                                 </a>
                                             </div>
                                             <div class="col-auto ms--2">
@@ -660,7 +705,7 @@
                                                 <!-- Avatar -->
                                                 <a href="#" class="avatar">
                                                     <img class="rounded" alt="Image placeholder"
-                                                        src="../../assets/img/team/profile-picture-4.jpg">
+                                                        src="{{ asset('assets-admin') }}/img/team/profile-picture-4.jpg">
                                                 </a>
                                             </div>
                                             <div class="col-auto ms--2">
@@ -805,10 +850,12 @@
             <div class="col-12 col-xl-4">
                 <div class="col-12 px-0 mb-4">
                     <div class="card shadow border-0 text-center p-0">
-                        <div class="profile-cover rounded-top" data-background="../../assets/img/profile-cover.jpg"
-                            style="background: url(&quot;../../assets/img/profile-cover.jpg&quot;);"></div>
+                        <div class="profile-cover rounded-top"
+                            data-background="{{ asset('assets-admin') }}/img/profile-cover.jpg"
+                            style="background: url(&quot;{{ asset('assets-admin') }}/img/profile-cover.jpg&quot;);">
+                        </div>
                         <div class="card-body pb-5">
-                            <img src="../../assets/img/team/profile-picture-1.jpg"
+                            <img src="{{ asset('assets-admin') }}/img/team/profile-picture-1.jpg"
                                 class="avatar-xl rounded-circle mx-auto mt-n7 mb-4" alt="Neil Portrait">
                             <h4 class="h3">Neil Sims</h4>
                             <h5 class="fw-normal">Senior Software Engineer</h5>
