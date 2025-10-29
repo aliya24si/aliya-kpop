@@ -398,7 +398,7 @@
                 <form action="{{ route('logout') }}" method="POST" class="mt-3">
                     @csrf
                     <button type="submit" class="btn btn-danger">
-                        <i class="fa fa-sign-out-alt me-2"></i> Logout
+                        <i class="fas fa-sign-out-alt"></i>Logout
                     </button>
                 </form>
                 <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
