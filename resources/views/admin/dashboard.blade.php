@@ -82,16 +82,9 @@
                     </div>
                     <div class="d-block">
                         <h2 class="h5 mb-3">Hi, Jane</h2>
-                        <a href="../../pages/examples/sign-in.html"
-                            class="btn btn-secondary btn-sm d-inline-flex align-items-center">
-                            <svg class="icon icon-xxs me-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
-                                </path>
-                            </svg>
-                            Sign Out
-                        </a>
+                        @if (session('success'))
+                            <div class="alert alert-success">{{ session('success') }}</div>
+                        @endif
                     </div>
                 </div>
                 <div class="collapse-close d-md-none">
@@ -402,6 +395,12 @@
                     </svg>
                     New Task
                 </button>
+                <form action="{{ route('logout') }}" method="POST" class="mt-3">
+                    @csrf
+                    <button type="submit" class="btn btn-danger">
+                        <i class="fa fa-sign-out-alt me-2"></i> Logout
+                    </button>
+                </form>
                 <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
                     <a class="dropdown-item d-flex align-items-center" href="#">
                         <svg class="dropdown-icon text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20"
