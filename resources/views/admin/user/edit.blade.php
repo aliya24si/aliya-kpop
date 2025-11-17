@@ -15,7 +15,8 @@
     <meta name="theme-color" content="#ffffff">
 
     <!-- Sweet Alert -->
-    <link type="text/css" href="{{ asset('assets-admin/vendor/sweetalert2/dist/sweetalert2.min.css') }}" rel="stylesheet">
+    <link type="text/css" href="{{ asset('assets-admin/vendor/sweetalert2/dist/sweetalert2.min.css') }}"
+        rel="stylesheet">
 
     <!-- Notyf -->
     <link type="text/css" href="{{ asset('assets-admin/vendor/notyf/notyf.min.css') }}" rel="stylesheet">
@@ -46,8 +47,7 @@
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="none" stroke-width="1.5" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479
                                     3 3 0 0 0-4.682-2.72m.94 3.198
                                     .001.031c0 .225-.012.447-.037.666
                                     A11.944 11.944 0 0 1 12 21
@@ -64,8 +64,7 @@
                         <span class="sidebar-icon">
                             <svg class="icon icon-xs me-2" fill="none" stroke-width="1.5" stroke="currentColor"
                                 viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M18 18.72a9.094 9.094 0 0 0 3.741-.479
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479
                                     3 3 0 0 0-4.682-2.72m.94 3.198
                                     .001.031c0 .225-.012.447-.037.666
                                     A11.944 11.944 0 0 1 12 21
@@ -89,8 +88,7 @@
                         <a href="#">
                             <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10
                                     a1 1 0 001 1h3m10-11l2 2m-2-2v10
                                     a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4
                                     a1 1 0 011-1h2a1 1 0 011 1v4
@@ -134,7 +132,8 @@
                             <div class="col-lg-4 col-md-6 mb-3">
                                 <label for="name" class="form-label">Nama</label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                    id="name" name="name" value="{{ $dataUser->name }}" maxlength="100" required>
+                                    id="name" name="name" value="{{ $dataUser->name }}" maxlength="100"
+                                    required>
                                 @error('name')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
@@ -143,8 +142,25 @@
                             <div class="col-lg-4 col-md-12 mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                    id="email" name="email" value="{{ $dataUser->email }}" maxlength="255" required>
+                                    id="email" name="email" value="{{ $dataUser->email }}" maxlength="255"
+                                    required>
                                 @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-lg-4 col-md-6 mb-3">
+                                <label for="role" class="form-label">Role</label>
+                                <select class="form-select @error('role') is-invalid @enderror" id="role"
+                                    name="role" required>
+                                    <option value="admin" {{ $dataUser->role == 'admin' ? 'selected' : '' }}>Admin
+                                    </option>
+                                    <option value="staff" {{ $dataUser->role == 'staff' ? 'selected' : '' }}>Staff
+                                    </option>
+                                    <option value="user" {{ $dataUser->role == 'user' ? 'selected' : '' }}>User
+                                    </option>
+                                </select>
+                                @error('role')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -169,6 +185,7 @@
                                 @enderror
                             </div>
 
+
                             <hr class="mt-0">
 
                             <div class="text-end">
@@ -186,7 +203,8 @@
                 <div class="col-12 col-md-4 col-xl-6 mb-4 mb-md-0">
                     <p class="mb-0 text-center text-lg-start">
                         © 2019-<span class="current-year"></span>
-                        <a class="text-primary fw-normal" href="https://themesberg.com" target="_blank">Themesberg</a>
+                        <a class="text-primary fw-normal" href="https://themesberg.com"
+                            target="_blank">Themesberg</a>
                     </p>
                 </div>
             </div>
@@ -198,4 +216,5 @@
     <script src="{{ asset('assets-admin/vendor/bootstrap/dist/js/bootstrap.min.js') }}"></script>
     <script src="{{ asset('assets-admin/js/volt.js') }}"></script>
 </body>
+
 </html>
