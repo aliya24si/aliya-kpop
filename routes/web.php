@@ -54,6 +54,12 @@ Route::get('/dashboard', function () {
 
 
 Route::resource('pelanggan', PelangganController::class); //untuk memanggil semua function sekaligus
+Route::post('/pelanggan/upload-files', [PelangganController::class, 'uploadFiles'])
+    ->name('pelanggan.uploadFiles');
+Route::delete('/pelanggan/file/{id}',
+    [PelangganController::class, 'deleteFile']
+)->name('pelanggan.file.delete');
+
 
 Route::resource('user', UserController::class);
 

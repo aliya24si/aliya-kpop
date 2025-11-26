@@ -24,8 +24,8 @@
                 <p class="mb-0">Form untuk menambah User baru</p>
             </div>
             <div>
-                <a href="{{ route('user.index') }}"
-                    class="btn btn-primary"><i class="far fa-question-circle me-1"></i> Kembali</a>
+                <a href="{{ route('user.index') }}" class="btn btn-primary"><i class="far fa-question-circle me-1"></i>
+                    Kembali</a>
             </div>
         </div>
     </div>
@@ -44,15 +44,14 @@
                         </div>
                     @endif
 
-                    <form action="{{ route('user.store') }}" method="POST">
+                    <form action="{{ route('user.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         {{-- Input Nama --}}
                         <div class="col-lg-4 col-md-6 mb-3">
                             <label for="name" class="form-label">Nama</label>
-                            <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                id="name" name="name" value="{{ old('name') }}" maxlength="100"
-                                required>
+                            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name"
+                                name="name" value="{{ old('name') }}" maxlength="100" required>
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -61,9 +60,8 @@
                         {{-- Input Email --}}
                         <div class="col-lg-4 col-md-12 mb-3">
                             <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control @error('email') is-invalid @enderror"
-                                id="email" name="email" value="{{ old('email') }}" maxlength="255"
-                                required>
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="email"
+                                name="email" value="{{ old('email') }}" maxlength="255" required>
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -72,7 +70,8 @@
                         {{-- **START: Penambahan Field Role** --}}
                         <div class="col-lg-4 col-md-6 mb-3">
                             <label for="role" class="form-label">Role</label>
-                            <select class="form-select @error('role') is-invalid @enderror" id="role" name="role" required>
+                            <select class="form-select @error('role') is-invalid @enderror" id="role" name="role"
+                                required>
                                 <option value="" disabled {{ old('role') ? '' : 'selected' }}>Pilih Role</option>
                                 <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
                                 <option value="staff" {{ old('role') == 'staff' ? 'selected' : '' }}>Staff</option>
@@ -97,13 +96,17 @@
                         {{-- Input Konfirmasi Password --}}
                         <div class="col-lg-4 col-md-12 mb-3">
                             <label for="password_confirmation" class="form-label">Password Confirmation</label>
-                            <input type="text"
-                                class="form-control @error('password_confirmation') is-invalid @enderror"
+                            <input type="text" class="form-control @error('password_confirmation') is-invalid @enderror"
                                 id="password_confirmation" name="password_confirmation" maxlength="20" required>
                             @error('password_confirmation')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        <div class="col-lg-4 col-md-6 mb-3">
+                            <label for="photo" class="form-label">Foto Profil</label>
+                            <input type="file" class="form-control" id="photo" name="photo">
+                        </div>
+
 
                         <hr class="mt-0">
 

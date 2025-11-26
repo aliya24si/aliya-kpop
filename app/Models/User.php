@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',     // <-- BARU: Tambahkan role
+        'photo',    // <-- BARU: Tambahkan photo
     ];
 
     /**
@@ -46,6 +48,8 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    // --- Scope Methods ---
 
     public function scopeFilter(Builder $query, $request, array $filterableColumns): Builder
     {

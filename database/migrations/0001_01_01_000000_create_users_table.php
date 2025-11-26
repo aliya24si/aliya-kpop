@@ -16,6 +16,11 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
+
+            // ** START: Penambahan Kolom Role **
+            $table->string('role')->default('user'); // Kolom untuk menyimpan role (admin, staff, user)
+            // ** END: Penambahan Kolom Role **
+
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -2,13 +2,12 @@
 
 @section('content')
     {{-- Start Main Content --}}
-
-
     <div class="py-4">
         <nav aria-label="breadcrumb" class="d-none d-md-inline-block">
             <ol class="breadcrumb breadcrumb-dark breadcrumb-transparent">
                 <li class="breadcrumb-item">
                     <a href="#">
+                        {{-- Icon Home SVG --}}
                         <svg class="icon icon-xxs" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                             xmlns="http://www.w3.org/2000/svg">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -31,57 +30,65 @@
         </div>
     </div>
 
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
+
     <div class="row">
         <div class="col-12 mb-4">
             <div class="card border-0 shadow mb-4">
                 <div class="card-body">
-                    <div class="table-responsive">
-                        <form method="GET" action="{{ route('user.index') }}">
-                            <div class="row align-items-end mb-3">
-
-                                <!-- Filter Role -->
-                                <div class="col-md-3">
-                                    <label class="form-label fw-bold">Filter Role</label>
-                                    <select name="role" onchange="this.form.submit()" class="form-select">
-                                        <option value="">All Roles</option>
-                                        <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin
-                                        </option>
-                                        <option value="staff" {{ request('role') == 'staff' ? 'selected' : '' }}>Staff
-                                        </option>
-                                        <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>User
-                                        </option>
-                                    </select>
-                                </div>
-
-
-                                <!-- Search Input -->
-                                <div class="col-md-6">
-                                    <label class="form-label fw-bold">Search</label>
-                                    <div class="input-group">
-                                        <input type="text" name="search" class="form-control"
-                                            value="{{ request('search') }}" placeholder="Search name, email...">
-
-                                        <button type="submit" class="btn btn-primary">
-                                            <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path fill-rule="evenodd"
-                                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                                    clip-rule="evenodd"></path>
-                                            </svg>
-                                        </button>
-
-                                        @if (request('search'))
-                                            <a href="{{ route('pelanggan.index') }}"
-                                                class="btn btn-outline-secondary">Clear</a>
-                                        @endif
-                                    </div>
-                                </div>
-
+                    {{-- Filter and Search Form --}}
+                    <form method="GET" action="{{ route('user.index') }}">
+                        <div class="row align-items-end mb-3">
+                            <div class="col-md-3">
+                                <label class="form-label fw-bold">Filter Role</label>
+                                <select name="role" onchange="this.form.submit()" class="form-select">
+                                    <option value="">All Roles</option>
+                                    <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin
+                                    </option>
+                                    <option value="staff" {{ request('role') == 'staff' ? 'selected' : '' }}>Staff
+                                    </option>
+                                    <option value="user" {{ request('role') == 'user' ? 'selected' : '' }}>User
+                                    </option>
+                                </select>
                             </div>
-                        </form>
+
+                            <div class="col-md-6">
+                                <label class="form-label fw-bold">Search</label>
+                                <div class="input-group">
+                                    <input type="text" name="search" class="form-control"
+                                        value="{{ request('search') }}" placeholder="Search name, email...">
+
+                                    <button type="submit" class="btn btn-primary">
+                                        {{-- Icon Search SVG --}}
+                                        <svg class="icon icon-xxs" fill="currentColor" viewBox="0 0 20 20"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <path fill-rule="evenodd"
+                                                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                                clip-rule="evenodd"></path>
+                                        </svg>
+                                    </button>
+
+                                    @if (request('search') || request('role'))
+                                        {{-- Ganti route 'pelanggan.index' ke 'user.index' --}}
+                                        <a href="{{ route('user.index') }}" class="btn btn-outline-secondary">Clear</a>
+                                    @endif
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+
+                    {{-- User Table --}}
+                    <div class="table-responsive">
                         <table id="table-User" class="table table-centered table-nowrap mb-0 rounded">
                             <thead class="thead-light">
                                 <tr>
+                                    <th class="border-0">Photo</th>
                                     <th class="border-0">Nama</th>
                                     <th class="border-0">Email</th>
                                     <th class="border-0">Role</th>
@@ -92,24 +99,39 @@
                             <tbody>
                                 @foreach ($dataUser as $item)
                                     <tr>
+                                        {{-- Kolom Photo --}}
+                                        <td>
+                                            @if ($item->photo)
+                                                <img src="{{ asset('storage/photo/' . $item->photo) }}" width="50"
+                                                    height="50" style="border-radius: 50%; object-fit: cover;">
+                                            @else
+                                                <img src="{{ asset('assets/img/default-avatar.png') }}" width="50"
+                                                    height="50" style="border-radius: 50%; object-fit: cover;">
+                                            @endif
+                                        </td>
+
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->email }}</td>
 
-                                        <!-- Role Badge -->
+                                        {{-- Kolom Role Badge --}}
                                         <td>
                                             <span
                                                 class="badge
-                        @if ($item->role == 'admin') bg-danger
-                        @elseif($item->role == 'staff') bg-warning
-                        @else bg-primary @endif">
+                                                @if ($item->role == 'admin') bg-danger
+                                                @elseif($item->role == 'staff') bg-warning
+                                                @else bg-primary @endif">
                                                 {{ ucfirst($item->role) }}
                                             </span>
                                         </td>
 
-                                        <td>{{ $item->password }}</td>
+                                        {{-- Kolom Password (Seharusnya HASH, TIDAK ditampilkan) --}}
+                                        {{-- Jika ini hanya untuk debugging, biarkan. Jika untuk Production, ubah menjadi teks statis seperti '********' --}}
+                                        <td>********</td>
 
+                                        {{-- Kolom Action --}}
                                         <td>
                                             <a href="{{ route('user.edit', $item->id) }}" class="btn btn-info btn-sm">
+                                                {{-- Icon Edit SVG --}}
                                                 <svg class="icon icon-xs me-2" fill="none" stroke-width="1.5"
                                                     stroke="currentColor" viewBox="0 0 24 24">
                                                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -122,8 +144,8 @@
                                                 class="d-inline" onsubmit="return confirm('Yakin mau hapus user ini?')">
                                                 @csrf
                                                 @method('DELETE')
-
-                                                <button class="btn btn-danger btn-sm">
+                                                <button type="submit" class="btn btn-danger btn-sm">
+                                                    {{-- Icon Hapus SVG --}}
                                                     <svg class="icon icon-xs me-2" fill="none" stroke="currentColor"
                                                         stroke-width="1.5" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
@@ -133,12 +155,12 @@
                                                 </button>
                                             </form>
                                         </td>
-
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+
                     {{-- Pagination --}}
                     <div class="mt-3">
                         {{ $dataUser->links('pagination::bootstrap-5') }}
