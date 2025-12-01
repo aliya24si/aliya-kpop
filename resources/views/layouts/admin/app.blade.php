@@ -21,7 +21,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <!-- Primary Meta Tags -->
-    <title>Volt Premium Bootstrap Dashboard - Forms</title>
+    <title>Project Praktikum Kampus</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="title" content="Volt Premium Bootstrap Dashboard - Forms">
     <meta name="author" content="Themesberg">
